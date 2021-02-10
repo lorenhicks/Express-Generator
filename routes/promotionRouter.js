@@ -41,7 +41,7 @@ promotionRouter
 promotionRouter
   .route("/:promotionId")
   .get((req, res, next) => {
-    Partner.findById(req.params.promotionId)
+    Promotion.findById(req.params.promotionId)
       .then((promotion) => {
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");

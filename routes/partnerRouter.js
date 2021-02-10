@@ -52,7 +52,7 @@ partnerRouter
   .post((req, res) => {
     res.statusCode = 403;
     res.end(
-      `POST operation not supported on /campsites/${req.params.campsiteId}`
+      `POST operation not supported on /partners/${req.params.partnerId}`
     );
   })
   .put((req, res, next) => {
