@@ -13,8 +13,6 @@ const partnerRouter = require("./routes/partnerRouter");
 
 const mongoose = require("mongoose");
 
-const config = require("./config");
-
 const url = config.mongoUrl;
 const connect = mongoose.connect(url, {
   useCreateIndex: true,
@@ -30,6 +28,9 @@ connect.then(
 
 const app = express();
 
+//Make sure this middleware is declared before other routes
+app.use(passport.initialize());
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
@@ -41,8 +42,6 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-
-app.use(passport.initialize());
 
 app.use(express.static(path.join(__dirname, "public")));
 
