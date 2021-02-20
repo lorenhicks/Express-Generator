@@ -10,6 +10,7 @@ const usersRouter = require("./routes/users");
 const campsiteRouter = require("./routes/campsiteRouter");
 const promotionRouter = require("./routes/promotionRouter");
 const partnerRouter = require("./routes/partnerRouter");
+const uploadRouter = require("./routes/uploadRouter");
 
 const mongoose = require("mongoose");
 
@@ -30,6 +31,9 @@ const app = express();
 
 //Make sure this middleware is declared before other routes
 app.use(passport.initialize());
+
+//File Upload Router
+app.use("/imageUpload", uploadRouter);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
